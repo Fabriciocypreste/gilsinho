@@ -32,13 +32,13 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-primary shadow-2xl py-2' : 'bg-primary py-4'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-primary shadow-2xl py-0.5' : 'bg-primary py-1'}`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
         <div className="flex items-center group cursor-pointer">
           <img 
             src="https://chemorena.com/logogilsinho1.png" 
             alt="Gilsinho Lopes Logo" 
-            className="h-24 md:h-36 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+            className="h-10 md:h-14 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
             referrerPolicy="no-referrer"
           />
         </div>
@@ -93,7 +93,7 @@ const Navbar = () => {
 
 const Hero = () => {
   return (
-    <section id="home" className="relative h-[60vh] md:h-[80vh] overflow-hidden bg-black">
+    <section id="home" className="relative h-[calc(100vh-44px)] md:h-[calc(100vh-64px)] overflow-hidden bg-black mt-[44px] md:mt-[64px]">
       {/* YouTube Background Video */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <iframe 
