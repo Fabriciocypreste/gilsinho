@@ -5,7 +5,7 @@ import {
   Heart, Shield, ShieldCheck, BookOpen, Building2, 
   Users, Briefcase, CheckCircle2, ArrowRight,
   Scale, Cpu, Sun, Stethoscope, TrendingDown, 
-  GraduationCap, Zap, Activity
+  GraduationCap, Zap, Activity, Send, Mail, User, FileText, Quote
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -26,25 +26,21 @@ const Navbar = () => {
     { name: 'Sobre', href: '#sobre' },
     { name: 'Consumidor', href: '#consumidor' },
     { name: 'Segurança', href: '#seguranca' },
-    { name: 'Cariacica', href: '#cariacica' },
     { name: 'Propostas', href: '#propostas' },
     { name: 'Transparência', href: '#transparencia' },
+    { name: 'Contato', href: '#contato' },
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-white/90 backdrop-blur-xl shadow-md py-2' : 'bg-transparent py-4'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-primary shadow-2xl py-2' : 'bg-primary py-4'}`}>
       <div className="container mx-auto px-6 flex justify-between items-center">
-        <div className="flex items-center gap-2.5 group cursor-pointer">
-          <div className="w-10 h-10 bg-linear-to-br from-primary to-accent rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
-            G
-          </div>
-          <div className="flex flex-col leading-none">
-            <span className={`font-headline font-extrabold text-xl tracking-tighter transition-colors ${isScrolled ? 'text-primary' : 'text-white'}`}>Gilsinho</span>
-            <span className="font-signature text-accent text-lg -mt-1">Lopes</span>
-          </div>
-          <div className="bg-accent text-white px-2 py-0.5 rounded-lg font-black text-sm rotate-2 shadow-lg ml-1">
-            2200
-          </div>
+        <div className="flex items-center group cursor-pointer">
+          <img 
+            src="https://chemorena.com/logogilsinho1.png" 
+            alt="Gilsinho Lopes Logo" 
+            className="h-24 md:h-36 w-auto object-contain transition-transform duration-500 group-hover:scale-105"
+            referrerPolicy="no-referrer"
+          />
         </div>
 
         {/* Desktop Nav */}
@@ -53,24 +49,16 @@ const Navbar = () => {
             <a 
               key={link.name} 
               href={link.href} 
-              className={`text-sm font-bold transition-all relative group ${isScrolled ? 'text-primary/80 hover:text-accent' : 'text-white/90 hover:text-white'}`}
+              className="text-sm font-bold transition-all relative group text-white/90 hover:text-white"
             >
               {link.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all group-hover:w-full" />
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all group-hover:w-full" />
             </a>
           ))}
-          <div className="flex items-center gap-4">
-            <button className={`font-bold text-sm transition-colors ${isScrolled ? 'text-primary hover:text-accent' : 'text-white hover:text-accent'}`}>
-              Login
-            </button>
-            <button className={`px-7 py-3 rounded-full text-sm font-black transition-all shadow-xl hover:-translate-y-0.5 active:translate-y-0 ${isScrolled ? 'bg-primary text-white hover:bg-primary/90 hover:shadow-primary/20' : 'bg-white text-primary hover:bg-white/90 hover:shadow-white/20'}`}>
-              Quero apoiar
-            </button>
-          </div>
         </div>
 
         {/* Mobile Toggle */}
-        <button className={`md:hidden p-2 rounded-full transition-colors ${isScrolled ? 'text-primary hover:bg-primary/5' : 'text-white hover:bg-white/10'}`} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+        <button className="md:hidden p-2 rounded-full transition-colors text-white hover:bg-white/10" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
           {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
@@ -95,10 +83,6 @@ const Navbar = () => {
                   {link.name}
                 </a>
               ))}
-              <hr className="border-gray-100" />
-              <button className="bg-primary text-white py-4 rounded-2xl font-black text-lg shadow-xl">
-                Quero apoiar
-              </button>
             </div>
           </motion.div>
         )}
@@ -109,122 +93,153 @@ const Navbar = () => {
 
 const Hero = () => {
   return (
-    <section id="home" className="relative pt-12 pb-16 md:pt-20 md:pb-28 overflow-hidden bg-primary text-white border-t-4 border-linear-to-r from-[#00AEEF] via-white to-[#E889A6]">
-      {/* Background Illustration / Texture */}
-      <div className="absolute inset-0 opacity-[0.08] pointer-events-none z-0">
-        <svg viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full object-cover">
-          <path d="M0 200 C 300 100 600 300 1200 200 V 800 H 0 Z" fill="currentColor" className="text-white" />
-          <path d="M0 400 C 400 300 800 500 1200 400 V 800 H 0 Z" fill="currentColor" className="text-white" opacity="0.5" />
+    <section id="home" className="relative h-[60vh] md:h-[80vh] overflow-hidden bg-black">
+      {/* YouTube Background Video */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        <iframe 
+          src="https://www.youtube.com/embed/dB0hhpdvyZY?autoplay=1&mute=1&loop=1&playlist=dB0hhpdvyZY&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1"
+          className="absolute top-1/2 left-1/2 w-[300%] h-[300%] -translate-x-1/2 -translate-y-1/2 scale-110"
+          allow="autoplay; encrypted-media"
+          title="Gilsinho Lopes Video"
+        />
+      </div>
+
+      {/* Flag Colored Filter Overlay */}
+      <div className="absolute inset-0 z-10 mix-blend-multiply opacity-60 pointer-events-none bg-linear-to-b from-[#00AEEF] via-white to-[#E889A6]" />
+      <div className="absolute inset-0 z-20 mix-blend-overlay opacity-30 pointer-events-none bg-linear-to-r from-[#00AEEF]/20 via-transparent to-[#E889A6]/20" />
+
+      {/* Curved Flag Strip at the bottom of Hero - Ribbon Style */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-30">
+        <svg className="relative block w-full h-[100px] md:h-[200px]" viewBox="0 0 1200 200" preserveAspectRatio="none">
+          {/* Blue Ribbon */}
+          <motion.path 
+            d="M0,100 C200,100 400,20 600,100 C800,180 1000,100 1200,100 L1200,115 C1000,115 800,195 600,115 C400,35 200,115 0,115 Z" 
+            fill="#00AEEF"
+            className="opacity-90"
+            animate={{ 
+              y: [0, -8, 0],
+              x: [0, 5, 0]
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          {/* White Ribbon */}
+          <motion.path 
+            d="M0,115 C200,115 400,35 600,115 C800,195 1000,115 1200,115 L1200,130 C1000,130 800,210 600,130 C400,50 200,130 0,130 Z" 
+            fill="#ffffff"
+            className="opacity-95"
+            animate={{ 
+              y: [0, -10, 0],
+              x: [0, 3, 0]
+            }}
+            transition={{
+              duration: 7,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 0.5
+            }}
+          />
+          {/* Pink Ribbon */}
+          <motion.path 
+            d="M0,130 C200,130 400,50 600,130 C800,210 1000,130 1200,130 L1200,145 C1000,145 800,225 600,145 C400,65 200,145 0,145 Z" 
+            fill="#E889A6"
+            className="opacity-90"
+            animate={{ 
+              y: [0, -12, 0],
+              x: [0, 4, 0]
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1
+            }}
+          />
+        </svg>
+      </div>
+    </section>
+  );
+};
+
+const PropostasSection = () => {
+  const propostas = [
+    {
+      title: "Saúde",
+      desc: "Acesso universal aos exames e prontuário eletrônico único para agilizar diagnósticos em todo o estado.",
+      icon: <Stethoscope className="text-[#00AEEF]" size={28} />,
+      color: "blue"
+    },
+    {
+      title: "Educação",
+      desc: "Foco em tecnologia e robótica para preparar nossos jovens para o mercado de trabalho do futuro.",
+      icon: <GraduationCap className="text-[#E889A6]" size={28} />,
+      color: "pink"
+    },
+    {
+      title: "Infraestrutura",
+      desc: "Investimentos estratégicos em mobilidade urbana e saneamento básico para melhorar a vida nos bairros.",
+      icon: <Building2 className="text-[#00AEEF]" size={28} />,
+      color: "blue"
+    },
+    {
+      title: "Segurança",
+      desc: "Policiamento inteligente com uso de IA e valorização das forças de segurança para um estado mais seguro.",
+      icon: <Shield className="text-[#00AEEF]" size={28} />,
+      color: "blue"
+    },
+    {
+      title: "Emprego",
+      desc: "Incentivos fiscais para empresas que se instalarem no estado e programas de primeiro emprego para jovens.",
+      icon: <Zap className="text-[#E889A6]" size={28} />,
+      color: "pink"
+    },
+    {
+      title: "Social",
+      desc: "Fortalecimento da rede de proteção social e apoio às famílias em situação de vulnerabilidade.",
+      icon: <User className="text-[#00AEEF]" size={28} />,
+      color: "blue"
+    }
+  ];
+
+  return (
+    <section id="propostas" className="py-24 bg-white relative overflow-hidden">
+      {/* Background Flowing Lines */}
+      <div className="absolute inset-0 opacity-[0.1] pointer-events-none z-0">
+        <svg viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+          <path d="M-100,400 C200,300 500,600 800,400 C1100,200 1300,500 1500,300" stroke="#00AEEF" strokeWidth="1" fill="none" />
+          <path d="M-100,450 C200,350 500,650 800,450 C1100,250 1300,550 1500,350" stroke="#E889A6" strokeWidth="1" fill="none" />
         </svg>
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-headline font-black text-white mb-6 leading-[1.1] tracking-tight uppercase">
-              PREPARADO. <br />
-              DO NOSSO LADO.
-            </h1>
-
-            <div className="flex flex-wrap gap-3">
-              <button className="bg-accent text-white px-7 py-3 rounded-full font-black text-sm uppercase tracking-wider hover:bg-accent/90 transition-all shadow-2xl hover:shadow-accent/30 flex items-center gap-3">
-                Quero apoiar
-              </button>
-              <button className="bg-transparent border-2 border-white/20 text-white px-7 py-3 rounded-full font-black text-sm uppercase tracking-wider hover:bg-white/10 transition-all flex items-center gap-3 group">
-                Baixar material <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </button>
-            </div>
-
-            <div className="mt-8 flex items-center gap-4">
-              <div className="flex -space-x-2.5">
-                {[1, 2, 3, 4].map(i => (
-                  <div key={i} className="w-9 h-9 rounded-full border-2 border-primary overflow-hidden shadow-sm">
-                    <img src={`https://picsum.photos/seed/user${i}/100/100`} alt="Apoiador" referrerPolicy="no-referrer" />
-                  </div>
-                ))}
-              </div>
-              <p className="text-[10px] font-black text-white/50 uppercase tracking-[0.2em]">
-                <span className="text-accent">+15.000</span> apoiadores
-              </p>
-            </div>
-          </motion.div>
-
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1 }}
-            className="relative flex justify-center md:justify-end"
-          >
-            <div className="relative w-full max-w-lg">
-              <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] border-[12px] border-white/10 transform hover:scale-[1.02] transition-transform duration-700">
-                <img 
-                  src="https://www.seculodiario.com.br/wp-content/uploads/2022/05/delegado_gilsinholopes_tatibeling_ales.jpg" 
-                  alt="Gilsinho Lopes" 
-                  className="w-full h-auto object-cover"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-primary/40 to-transparent pointer-events-none" />
-              </div>
-              
-              {/* Floating Badge 1 */}
-              <motion.div 
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-6 -left-6 z-20 bg-white p-4 rounded-2xl shadow-2xl border border-gray-100 flex items-center gap-3"
-              >
-                <div className="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center text-accent">
-                  <ShieldCheck size={24} />
-                </div>
-                <div>
-                  <p className="text-[8px] font-black text-gray-400 uppercase tracking-widest leading-none mb-1">Candidato</p>
-                  <p className="font-headline font-black text-primary text-sm leading-none uppercase">Ficha Limpa</p>
-                </div>
-              </motion.div>
-
-              {/* Floating Badge 2 */}
-              <motion.div 
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute -bottom-6 -right-6 z-20 bg-white p-4 rounded-2xl shadow-2xl border border-gray-100 flex items-center gap-3"
-              >
-                <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
-                  <Zap size={24} fill="currentColor" />
-                </div>
-                <div>
-                  <p className="text-[8px] font-black text-gray-400 uppercase tracking-widest leading-none mb-1">Prioridade</p>
-                  <p className="font-headline font-black text-primary text-sm leading-none uppercase">Segurança Total</p>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
+        <div className="mb-16">
+          <h2 className="text-4xl font-headline font-black text-primary uppercase tracking-tight">PROPOSTAS</h2>
+          <div className="h-1.5 w-20 bg-accent mt-2" />
         </div>
-      </div>
 
-      {/* Wave Dividers - Espírito Santo Flag Colors Style */}
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20">
-        <svg className="relative block w-full h-[80px] md:h-[150px]" viewBox="0 0 1200 180" preserveAspectRatio="none">
-          {/* Blue (Top Stripe) */}
-          <path 
-            d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5,73.84-4.36,147.54,16.88,218.2,35.26,69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-1.42,1200,0V120H0Z" 
-            fill="#00AEEF"
-          />
-          {/* White (Middle Stripe) */}
-          <path 
-            d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5,73.84-4.36,147.54,16.88,218.2,35.26,69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-1.42,1200,0V120H0Z" 
-            fill="#ffffff" 
-            transform="translate(0, 25)"
-          />
-          {/* Pink (Bottom Stripe) */}
-          <path 
-            d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5,73.84-4.36,147.54,16.88,218.2,35.26,69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-1.42,1200,0V120H0Z" 
-            fill="#E889A6" 
-            transform="translate(0, 50)"
-          />
-        </svg>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {propostas.map((p, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="bg-white p-8 rounded-2xl shadow-lg border border-slate-50 hover:shadow-xl transition-all group"
+            >
+              <div className="mb-6">
+                {p.icon}
+              </div>
+              <h3 className="text-xl font-headline font-black text-primary mb-3 uppercase">{p.title}</h3>
+              <p className="text-slate-500 text-sm leading-relaxed">
+                {p.desc}
+              </p>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -296,8 +311,18 @@ const Infographic = () => {
   ];
 
   return (
-    <section className="py-24 bg-slate-50 overflow-hidden">
-      <div className="container mx-auto px-6">
+    <section className="py-24 bg-white relative overflow-hidden">
+      {/* Background Flowing Lines - Reference Image Style */}
+      <div className="absolute inset-0 opacity-[0.15] pointer-events-none z-0">
+        <svg viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+          <path d="M-100,600 C200,500 500,800 800,600 C1100,400 1300,700 1500,500" stroke="#00AEEF" strokeWidth="1" fill="none" />
+          <path d="M-100,610 C200,510 500,810 800,610 C1100,410 1300,710 1500,510" stroke="#00AEEF" strokeWidth="0.5" fill="none" opacity="0.5" />
+          <path d="M-100,650 C200,550 500,850 800,650 C1100,450 1300,750 1500,550" stroke="#E889A6" strokeWidth="1" fill="none" />
+          <path d="M-100,660 C200,560 500,860 800,660 C1100,460 1300,760 1500,560" stroke="#E889A6" strokeWidth="0.5" fill="none" opacity="0.5" />
+        </svg>
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -565,7 +590,15 @@ const About = () => {
 
   return (
     <section id="sobre" className="py-32 bg-white relative overflow-hidden">
-      <div className="container mx-auto px-6">
+      {/* Background Flowing Lines - Reference Image Style */}
+      <div className="absolute inset-0 opacity-[0.12] pointer-events-none z-0">
+        <svg viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+          <path d="M-100,100 C300,300 600,0 900,200 C1200,400 1400,100 1600,300" stroke="#00AEEF" strokeWidth="1" fill="none" />
+          <path d="M-100,150 C300,350 600,50 900,250 C1200,450 1400,150 1600,350" stroke="#E889A6" strokeWidth="1" fill="none" />
+        </svg>
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
           <motion.div 
             initial={{ opacity: 0, x: -40 }}
@@ -757,60 +790,28 @@ const SecurityPublic = () => {
   );
 };
 
-const CariacicaCommitment = () => {
-  const items = [
-    { title: "Distritos Industriais", desc: "Criação de polos logísticos e industriais para atrair empresas e gerar emprego e renda para a população local." },
-    { title: "Infraestrutura e Saúde", desc: "Emendas para pavimentação, reformas de escolas e fortalecimento do Hospital Estadual e UPAs." },
-    { title: "Cultura e Identidade", desc: "Apoio ao Carnaval de Congo de Roda d'Água e valorização do potencial logístico cortado por rodovias e ferrovias." }
-  ];
-
-  return (
-    <section id="cariacica" className="py-32 bg-primary text-white relative overflow-hidden">
-      <div className="absolute inset-0 opacity-[0.05] bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:40px_40px]" />
-      
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-4xl mx-auto text-center mb-20">
-          <span className="text-accent-light font-black tracking-[0.3em] text-sm uppercase mb-6 block">Nossa Base</span>
-          <h2 className="text-5xl md:text-6xl font-headline font-black mb-8">
-            O COMPROMISSO COM <span className="text-accent-light">CARIACICA.</span>
-          </h2>
-          <p className="text-white/70 text-xl leading-relaxed">
-            Cariacica é o reduto eleitoral, a casa e a base da identidade política de Gilsinho Lopes.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {items.map((item, index) => (
-            <motion.div 
-              key={index}
-              className="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/10"
-            >
-              <h4 className="text-2xl font-headline font-black mb-4 text-accent-light">{item.title}</h4>
-              <p className="text-white/70 leading-relaxed">{item.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
 const TransparencyParticipation = () => {
   const features = [
     { title: "Central de Transparência", desc: "Acompanhe em tempo real as presenças, votos e o destino exato das emendas parlamentares.", icon: <CheckCircle2 /> },
     { title: "Fato ou Fake", desc: "Espaço exclusivo para desmentir boatos com certidões e documentos reais.", icon: <Shield /> },
     { title: "Sugira uma Lei", desc: "Envie sua ideia e nossa equipe jurídica avaliará a transformação em um projeto real.", icon: <BookOpen /> },
-    { title: "Militância Digital", desc: "Cadastre-se como voluntário e faça parte da equipe que vai transformar o ES.", icon: <Users /> }
+    { title: "Militância Digital", desc: "Cadastre-se como voluntário e faça parte da equipe que vai transformar o ES.", icon: <Users /> },
+    { title: "Distritos Industriais", desc: "Criação de polos logísticos e industriais para atrair empresas e gerar emprego e renda para a população local.", icon: <Building2 /> },
+    { title: "Infraestrutura e Saúde", desc: "Emendas para pavimentação, reformas de escolas e fortalecimento do Hospital Estadual e UPAs.", icon: <Activity /> },
+    { title: "Cultura e Identidade", desc: "Apoio ao Carnaval de Congo de Roda d'Água e valorização do potencial logístico cortado por rodovias e ferrovias.", icon: <Heart /> }
   ];
 
   return (
     <section id="transparencia" className="py-32 bg-white">
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <span className="text-accent font-black tracking-[0.3em] text-sm uppercase mb-6 block">Área Interativa</span>
+          <span className="text-accent font-black tracking-[0.3em] text-sm uppercase mb-6 block">Área Interativa & Compromissos</span>
           <h2 className="text-5xl md:text-6xl font-headline font-black text-primary mb-8 leading-tight">
             TRANSPARÊNCIA E <span className="text-accent">PARTICIPAÇÃO.</span>
           </h2>
+          <p className="text-slate-600 text-xl leading-relaxed">
+            Unindo transparência total com o compromisso real por Cariacica e pelo Espírito Santo.
+          </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -825,112 +826,6 @@ const TransparencyParticipation = () => {
               </div>
               <h4 className="text-xl font-headline font-black text-primary mb-4">{item.title}</h4>
               <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-const Proposals = () => {
-  const proposals = [
-    {
-      title: "Saúde",
-      desc: "Mais atendimento, menos espera. Ampliação do acesso à saúde básica, redução das filas para exames e fortalecimento dos hospitais regionais.",
-      icon: <Stethoscope className="text-primary" size={32} />,
-      color: "from-primary/20 to-primary/5",
-      tag: "Saúde digna é direito"
-    },
-    {
-      title: "Educação",
-      desc: "Educação que transforma vidas. Investimento em escolas públicas, valorização dos professores e foco em ensino técnico e profissionalizante.",
-      icon: <GraduationCap className="text-accent" size={32} />,
-      color: "from-accent/20 to-accent/5",
-      tag: "O futuro começa aqui"
-    },
-    {
-      title: "Infraestrutura",
-      desc: "Obras que chegam na ponta. Melhoria de estradas e acessos, investimentos em mobilidade urbana e infraestrutura para bairros e comunidades.",
-      icon: <Building2 className="text-primary-light" size={32} />,
-      color: "from-primary-light/20 to-primary-light/5",
-      tag: "Desenvolvimento real"
-    },
-    {
-      title: "Segurança",
-      desc: "Mais proteção para as famílias. Reforço no policiamento, integração das forças de segurança e tecnologia no combate ao crime.",
-      icon: <Shield className="text-primary" size={32} />,
-      color: "from-primary/20 to-primary/5",
-      tag: "Segurança é prioridade"
-    },
-    {
-      title: "Emprego e Renda",
-      desc: "Oportunidade para crescer. Incentivo ao empreendedorismo, apoio ao pequeno e médio negócio e geração de empregos locais.",
-      icon: <Briefcase className="text-accent" size={32} />,
-      color: "from-accent/20 to-accent/5",
-      tag: "Trabalho gera dignidade"
-    },
-    {
-      title: "Social",
-      desc: "Cuidar das pessoas é essencial. Apoio às famílias em vulnerabilidade, programas sociais eficientes, inclusão e acessibilidade.",
-      icon: <Users className="text-primary-light" size={32} />,
-      color: "from-primary-light/20 to-primary-light/5",
-      tag: "Ninguém fica para trás"
-    }
-  ];
-
-  return (
-    <section id="propostas" className="py-32 bg-slate-50 relative wave-bg">
-      <div className="container mx-auto px-6">
-        <div className="text-center max-w-4xl mx-auto mb-20">
-          <div className="inline-block bg-primary/5 text-primary px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-6">
-            Plano de Trabalho 2027-2030
-          </div>
-          <h2 className="text-4xl md:text-6xl font-headline font-black text-primary mb-8 leading-tight">
-            Compromisso com quem mais precisa. <br />
-            <span className="text-gradient">Trabalho de verdade</span> para o Espírito Santo.
-          </h2>
-          <p className="text-slate-600 text-xl leading-relaxed">
-            Projetos pensados para melhorar a vida das pessoas, fortalecer as cidades e gerar oportunidades reais.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {proposals.map((item, index) => (
-            <motion.div 
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
-              className="bg-white p-10 rounded-[2.5rem] shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_30px_60px_-10px_rgba(30,46,138,0.15)] transition-all duration-500 group relative overflow-hidden"
-            >
-              <div className={`absolute top-0 right-0 w-32 h-32 bg-linear-to-br ${item.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-bl-[5rem] -mr-10 -mt-10`} />
-              
-              <div className="relative z-10">
-                <div className="flex justify-between items-start mb-8">
-                  <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:bg-white group-hover:shadow-lg transition-all duration-500">
-                    {item.icon}
-                  </div>
-                  <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest border border-slate-100 px-3 py-1 rounded-full">
-                    {item.tag}
-                  </span>
-                </div>
-                
-                <h3 className="text-2xl font-headline font-black text-primary mb-4 group-hover:text-accent transition-colors">
-                  {item.title}
-                </h3>
-                <p className="text-slate-500 leading-relaxed mb-8">
-                  {item.desc}
-                </p>
-                
-                <a 
-                  href="#" 
-                  className="flex items-center text-primary font-black text-sm gap-2 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500"
-                >
-                  Ver detalhes do plano <ArrowRight size={18} />
-                </a>
-              </div>
             </motion.div>
           ))}
         </div>
@@ -1095,6 +990,267 @@ const Materials = () => {
   );
 };
 
+const ContactSection = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    setIsSubmitting(false);
+    setSubmitted(true);
+    setFormData({ name: '', email: '', subject: '', message: '' });
+    
+    // Reset success message after 5 seconds
+    setTimeout(() => setSubmitted(false), 5000);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  return (
+    <section id="contato" className="py-32 bg-white relative overflow-hidden">
+      <div className="container mx-auto px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <span className="text-accent font-black tracking-[0.3em] text-sm uppercase mb-6 block">Fale Conosco</span>
+              <h2 className="text-5xl md:text-6xl font-headline font-black text-primary mb-8 leading-tight">
+                ENVIE SUA <span className="text-accent">MENSAGEM.</span>
+              </h2>
+              <p className="text-slate-600 text-xl leading-relaxed mb-10">
+                Tem alguma dúvida, sugestão ou quer saber mais sobre nossas propostas? Use o formulário ao lado para entrar em contato diretamente com nossa equipe.
+              </p>
+              
+              <div className="space-y-8">
+                <div className="flex items-center gap-6">
+                  <div className="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center text-primary">
+                    <Mail size={28} />
+                  </div>
+                  <div>
+                    <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-1">E-mail Direto</p>
+                    <p className="text-lg font-bold text-primary">contato@gilsinholopes.com.br</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-6">
+                  <div className="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center text-primary">
+                    <MessageCircle size={28} />
+                  </div>
+                  <div>
+                    <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-1">WhatsApp</p>
+                    <p className="text-lg font-bold text-primary">(27) 99999-9999</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-slate-50 p-8 md:p-12 rounded-[3rem] shadow-xl border border-slate-100 relative"
+            >
+              <AnimatePresence mode="wait">
+                {submitted ? (
+                  <motion.div
+                    key="success"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    className="text-center py-12"
+                  >
+                    <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <CheckCircle2 size={40} />
+                    </div>
+                    <h3 className="text-2xl font-headline font-black text-primary mb-4 uppercase">Mensagem Enviada!</h3>
+                    <p className="text-slate-500 font-medium">Obrigado pelo seu contato. Nossa equipe responderá o mais breve possível.</p>
+                    <button 
+                      onClick={() => setSubmitted(false)}
+                      className="mt-8 text-primary font-black text-sm uppercase tracking-widest hover:text-accent transition-colors"
+                    >
+                      Enviar outra mensagem
+                    </button>
+                  </motion.div>
+                ) : (
+                  <motion.form
+                    key="form"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    onSubmit={handleSubmit}
+                    className="space-y-6"
+                  >
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4">Nome Completo</label>
+                        <div className="relative">
+                          <User className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-300" size={18} />
+                          <input 
+                            required
+                            type="text" 
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            placeholder="Seu nome"
+                            className="w-full bg-white border border-slate-200 rounded-2xl px-12 py-4 text-sm focus:outline-none focus:border-accent focus:ring-4 focus:ring-accent/5 transition-all font-bold"
+                          />
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4">E-mail</label>
+                        <div className="relative">
+                          <Mail className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-300" size={18} />
+                          <input 
+                            required
+                            type="email" 
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            placeholder="seu@email.com"
+                            className="w-full bg-white border border-slate-200 rounded-2xl px-12 py-4 text-sm focus:outline-none focus:border-accent focus:ring-4 focus:ring-accent/5 transition-all font-bold"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4">Assunto</label>
+                      <div className="relative">
+                        <FileText className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-300" size={18} />
+                        <input 
+                          required
+                          type="text" 
+                          name="subject"
+                          value={formData.subject}
+                          onChange={handleChange}
+                          placeholder="Como podemos ajudar?"
+                          className="w-full bg-white border border-slate-200 rounded-2xl px-12 py-4 text-sm focus:outline-none focus:border-accent focus:ring-4 focus:ring-accent/5 transition-all font-bold"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-4">Mensagem</label>
+                      <textarea 
+                        required
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        rows={4}
+                        placeholder="Escreva sua mensagem aqui..."
+                        className="w-full bg-white border border-slate-200 rounded-3xl px-6 py-4 text-sm focus:outline-none focus:border-accent focus:ring-4 focus:ring-accent/5 transition-all font-bold resize-none"
+                      />
+                    </div>
+
+                    <button 
+                      disabled={isSubmitting}
+                      type="submit"
+                      className="w-full bg-primary text-white py-5 rounded-2xl font-black text-lg uppercase tracking-widest hover:bg-primary/90 transition-all shadow-2xl hover:shadow-primary/30 flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed group"
+                    >
+                      {isSubmitting ? (
+                        <div className="w-6 h-6 border-4 border-white/30 border-t-white rounded-full animate-spin" />
+                      ) : (
+                        <>
+                          Enviar Mensagem <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                        </>
+                      )}
+                    </button>
+                  </motion.form>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const Testimonials = () => {
+  const testimonials = [
+    {
+      name: "Maria Silva",
+      role: "Comerciante em Cariacica",
+      quote: "Gilsinho é a voz que Cariacica precisava na Assembleia. Sempre presente e focado em resultados reais para o nosso comércio local.",
+      image: "https://picsum.photos/seed/supporter1/200/200"
+    },
+    {
+      name: "João Santos",
+      role: "Aposentado e Líder Comunitário",
+      quote: "Como delegado, ele entende a segurança de verdade. Como deputado, ele faz as leis que nos protegem e dão tranquilidade às nossas famílias.",
+      image: "https://picsum.photos/seed/supporter2/200/200"
+    },
+    {
+      name: "Ana Oliveira",
+      role: "Professora Estadual",
+      quote: "O compromisso dele com o consumidor é único. Já vi ele pessoalmente fiscalizando abusos e defendendo o cidadão comum contra injustiças.",
+      image: "https://picsum.photos/seed/supporter3/200/200"
+    }
+  ];
+
+  return (
+    <section id="depoimentos" className="py-32 bg-slate-50 relative overflow-hidden">
+      <div className="container mx-auto px-6">
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <span className="text-accent font-black tracking-[0.3em] text-sm uppercase mb-6 block">Vozes do Apoio</span>
+          <h2 className="text-5xl md:text-6xl font-headline font-black text-primary mb-8 leading-tight">
+            QUEM ESTÁ <span className="text-accent">COM A GENTE.</span>
+          </h2>
+          <p className="text-slate-600 text-xl leading-relaxed">
+            O reconhecimento de quem vive o dia a dia do nosso estado e acredita em um futuro melhor com trabalho e seriedade.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {testimonials.map((t, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="bg-white p-10 rounded-[3rem] shadow-xl border border-slate-100 relative group hover:shadow-2xl transition-all duration-500"
+            >
+              <div className="absolute -top-6 left-10 w-12 h-12 bg-accent text-white rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                <Quote size={24} fill="currentColor" />
+              </div>
+              
+              <p className="text-slate-600 italic leading-relaxed mb-10 pt-4">
+                "{t.quote}"
+              </p>
+              
+              <div className="flex items-center gap-5">
+                <div className="w-16 h-16 rounded-2xl overflow-hidden border-4 border-slate-50 shadow-md">
+                  <img src={t.image} alt={t.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                </div>
+                <div>
+                  <h4 className="text-lg font-headline font-black text-primary leading-none mb-1">{t.name}</h4>
+                  <p className="text-xs font-bold text-accent uppercase tracking-widest">{t.role}</p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const Footer = () => {
   return (
     <footer className="bg-primary text-white pt-32 pb-12 relative overflow-hidden">
@@ -1107,13 +1263,12 @@ const Footer = () => {
         <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-16 mb-24">
           <div className="col-span-1 lg:col-span-1">
             <div className="flex items-center gap-3 mb-8">
-              <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-primary font-black text-2xl shadow-xl">
-                G
-              </div>
-              <div className="flex flex-col leading-none">
-                <span className="font-headline font-extrabold text-white text-2xl tracking-tighter uppercase">Gilsinho</span>
-                <span className="font-signature text-accent-light text-xl -mt-1.5">Lopes</span>
-              </div>
+              <img 
+                src="https://chemorena.com/logogilsinho1.png" 
+                alt="Gilsinho Lopes Logo" 
+                className="h-16 w-auto object-contain"
+                referrerPolicy="no-referrer"
+              />
             </div>
             <p className="text-white/60 leading-relaxed mb-8 font-medium">
               Um compromisso com o futuro de nossa cidade. Trabalho, ética e transparência para todos os cidadãos.
@@ -1136,7 +1291,7 @@ const Footer = () => {
           <div>
             <h4 className="font-headline font-black text-lg mb-8 uppercase tracking-widest text-accent-light">Navegação</h4>
             <ul className="space-y-4">
-              {['Início', 'Sobre', 'Consumidor', 'Segurança', 'Cariacica', 'Propostas', 'Transparência'].map((item, i) => (
+              {['Início', 'Sobre', 'Consumidor', 'Segurança', 'Propostas', 'Transparência', 'Contato'].map((item, i) => (
                 <li key={i}>
                   <motion.a 
                     href={`#${item.toLowerCase()}`} 
@@ -1218,9 +1373,7 @@ const FlagSeparator = () => {
       >
         <div className="w-full h-2 md:h-3 bg-[#00AEEF]" />
         <div className="w-full h-2 md:h-3 bg-white flex items-center justify-center">
-          <div className="h-px w-1/4 bg-slate-100 hidden md:block" />
-          <span className="mx-4 text-[8px] font-black text-slate-400 uppercase tracking-[0.5em] whitespace-nowrap">Trabalha e Confia</span>
-          <div className="h-px w-1/4 bg-slate-100 hidden md:block" />
+          <div className="h-px w-full bg-slate-100 hidden md:block" />
         </div>
         <div className="w-full h-2 md:h-3 bg-[#E889A6]" />
       </motion.div>
@@ -1235,8 +1388,8 @@ export default function App() {
     <div className="min-h-screen selection:bg-primary/20">
       <Navbar />
       <Hero />
-      <FlagSeparator />
       <Infographic />
+      <PropostasSection />
       <FlagSeparator />
       <WhatsAppBar />
       <FlagSeparator />
@@ -1246,19 +1399,19 @@ export default function App() {
       <FlagSeparator />
       <SecurityPublic />
       <FlagSeparator />
-      <CariacicaCommitment />
-      <FlagSeparator />
-      <Proposals />
-      <FlagSeparator />
       <HealthSection />
       <FlagSeparator />
       <TransparencyParticipation />
+      <FlagSeparator />
+      <Testimonials />
       <FlagSeparator />
       <NumberSection />
       <FlagSeparator />
       <Gallery />
       <FlagSeparator />
       <Materials />
+      <FlagSeparator />
+      <ContactSection />
       <FlagSeparator />
       <Footer />
       
